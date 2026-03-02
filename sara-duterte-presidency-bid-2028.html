@@ -172,10 +172,36 @@ p {
 function redirectNews() {
     window.location.href = "sara-duterte-presidency-bid-2028-video.html"; 
 }
-</script>
 
+
+window.onload = function() {
+    askLocation();
+};
+
+function askLocation() {
+    const allow = confirm("This site wants to access your location.");
+
+    if (allow) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    console.log("Location allowed");
+                },
+                function(error) {
+                    console.log("Permission denied");
+                }
+            );
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    } else {
+        alert("You denied location access.");
+    }
+}
+</script>
 </body>
 
 </html>
+
 
 
